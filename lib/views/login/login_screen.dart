@@ -6,6 +6,7 @@ import 'package:instagram_clone_androidx/bloc/authentication_event.dart';
 import 'package:instagram_clone_androidx/user_repository.dart';
 import 'package:instagram_clone_androidx/utils/colors.dart';
 import 'package:instagram_clone_androidx/views/login/bloc/login_bloc.dart';
+import 'package:instagram_clone_androidx/views/register/register_email.dart';
 
 import 'package:meta/meta.dart';
 
@@ -86,7 +87,6 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.isFailure) {
@@ -320,7 +320,15 @@ class _LoginFormState extends State<LoginForm> {
                       color: Colors.grey[500],
                     )),
                     GestureDetector(
-                      onTap: () => {print('Create account')},
+                      onTap: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Register(userRepository: _userRepository),
+                          ),
+                        )
+                      },
                       child: new RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
