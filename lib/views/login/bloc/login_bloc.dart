@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:instagram_clone_androidx/user_repository.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/material.dart';
+import '../../../user_repository.dart';
 import '../validators.dart';
 import './bloc.dart';
 

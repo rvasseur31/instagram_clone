@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_state.dart';
-import 'package:instagram_clone_androidx/user_repository.dart';
-import 'package:instagram_clone_androidx/utils/routes.dart';
-import 'package:instagram_clone_androidx/utils/uidata.dart';
-import 'package:instagram_clone_androidx/views/home_page.dart';
-import 'package:instagram_clone_androidx/views/login/login_screen.dart';
-import 'package:instagram_clone_androidx/views/splash_screen.dart';
+import 'package:instagram_clone/authenticated_app.dart';
+
+import 'bloc/bloc.dart';
+import 'user_repository.dart';
+import 'utils/routes.dart';
+import 'utils/uidata.dart';
+import 'views/home_page.dart';
+import 'views/login/login_screen.dart';
+import 'views/splash_screen.dart';
 
 class App extends StatelessWidget {
   final UserRepository _userRepository;
@@ -29,8 +30,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       showPerformanceOverlay: false,
       routes: <String, WidgetBuilder>{
-        AppRoutes.homeRoute: (BuildContext context) => HomeScreen(
-              name: null,
+        AppRoutes.homeRoute: (BuildContext context) => HomeView(
+              uid: null,
             ),
         AppRoutes.splashScreenRoute: (BuildContext context) => SplashScreen(),
         AppRoutes.signInScreenRoute: (BuildContext context) =>
@@ -41,7 +42,10 @@ class App extends StatelessWidget {
           if (state is Uninitialized) {
             return SplashScreen();
           } else if (state is Authenticated) {
-            return HomeScreen(name: state.displayName);
+            //return PickImageAndAddedToFirebase(uid: state.uid);
+            //return Profile();
+            //return HomeView(uid: "61lh3rJwimfa8rQjotJcNK2hMqs0");
+            return AuthenticatedApp(uid: state.uid);
           } else if (state is Unauthenticated) {
             return LoginScreen(userRepository: _userRepository);
           }

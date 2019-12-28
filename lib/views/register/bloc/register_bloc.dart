@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:instagram_clone_androidx/user_repository.dart';
-import 'package:instagram_clone_androidx/views/login/validators.dart';
-import 'package:instagram_clone_androidx/views/register/bloc/register_event.dart';
-import 'package:instagram_clone_androidx/views/register/bloc/register_state.dart';
+import 'package:instagram_clone/user_repository.dart';
+import 'package:instagram_clone/views/login/validators.dart';
+import 'package:instagram_clone/views/register/bloc/register_event.dart';
+import 'package:instagram_clone/views/register/bloc/register_state.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 

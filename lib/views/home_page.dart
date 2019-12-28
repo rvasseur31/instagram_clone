@@ -1,35 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_event.dart';
 
-class HomeScreen extends StatelessWidget {
-  final String name;
+class HomeView extends StatefulWidget {
+  final String uid;
 
-  HomeScreen({Key key, @required this.name}) : super(key: key);
+  HomeView({Key key, @required this.uid}) : super(key: key);
+
+  createState() => _HomeViewState(uid: uid);
+}
+
+class _HomeViewState extends State<HomeView> {
+  final String uid;
+
+  _HomeViewState({@required this.uid});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
-            onPressed: () {
-              BlocProvider.of<AuthenticationBloc>(context).add(
-                LoggedOut(),
-              );
-            },
-          )
-        ],
-      ),
-      body: Column(
+      // return Scaffold(
+      // appBar: AppBar(
+      //   title: Text('Home'),
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: Icon(Icons.exit_to_app),
+      //       onPressed: () {
+      //         BlocProvider.of<AuthenticationBloc>(context).add(
+      //           LoggedOut(),
+      //         );
+      //       },
+      //     )
+      //   ],
+      // ),
+      // body: 
+      return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Center(child: Text('Welcome $name!')),
+          Center(child: Text('Welcome $uid')),
         ],
-      ),
-    );
+      );
   }
 }

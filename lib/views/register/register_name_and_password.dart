@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instagram_clone_androidx/app.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_event.dart';
-import 'package:instagram_clone_androidx/components/editText/editText_input_decoration.dart';
-import 'package:instagram_clone_androidx/user_repository.dart';
-import 'package:instagram_clone_androidx/utils/colors.dart';
-import 'package:instagram_clone_androidx/utils/string.dart';
-import 'package:instagram_clone_androidx/views/register/bloc/register_bloc.dart';
-import 'package:instagram_clone_androidx/views/register/bloc/register_event.dart';
-import 'package:instagram_clone_androidx/views/register/bloc/register_state.dart';
+import 'package:instagram_clone/app.dart';
+import 'package:instagram_clone/bloc/authentication_bloc.dart';
+import 'package:instagram_clone/bloc/authentication_event.dart';
+import 'package:instagram_clone/components/editText/editText_input_decoration.dart';
+import 'package:instagram_clone/user_repository.dart';
+import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/utils/string.dart';
+import 'package:instagram_clone/views/register/bloc/register_bloc.dart';
+import 'package:instagram_clone/views/register/bloc/register_event.dart';
+import 'package:instagram_clone/views/register/bloc/register_state.dart';
 
 class RegisterNameAndPasswordStateless extends StatelessWidget {
   final UserRepository _userRepository;
@@ -31,7 +31,7 @@ class RegisterNameAndPasswordStateless extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomPadding: false,
         body: BlocProvider<RegisterBloc>(
-          builder: (context) => RegisterBloc(userRepository: _userRepository),
+          create: (context) => RegisterBloc(userRepository: _userRepository),
           child: RegisterNameAndPassword(
               email: _email, userRepository: _userRepository),
         ),

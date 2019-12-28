@@ -74,3 +74,11 @@
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
+instagram-clone.json
+.flutter-plugins-dependencies
+pubspec.lock
+android/.project
+android/.settings/org.eclipse.buildship.core.prefs
+android/app/.project
+android/app/.classpath
+android/app/.settings/org.eclipse.buildship.core.prefs

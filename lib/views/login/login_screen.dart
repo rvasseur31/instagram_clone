@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_bloc.dart';
-import 'package:instagram_clone_androidx/bloc/authentication_event.dart';
-import 'package:instagram_clone_androidx/user_repository.dart';
-import 'package:instagram_clone_androidx/utils/colors.dart';
-import 'package:instagram_clone_androidx/views/login/bloc/login_bloc.dart';
-import 'package:instagram_clone_androidx/views/register/register_email.dart';
+import 'package:instagram_clone/bloc/bloc.dart';
+import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/views/register/register_email.dart';
 
 import 'package:meta/meta.dart';
 
+import '../../user_repository.dart';
+import 'bloc/login_bloc.dart';
 import 'bloc/login_event.dart';
 import 'bloc/login_state.dart';
 
@@ -26,7 +25,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: BlocProvider<LoginBloc>(
-        builder: (context) => LoginBloc(userRepository: _userRepository),
+        create: (context) => LoginBloc(userRepository: _userRepository),
         child: LoginForm(
           userRepository: _userRepository,
         ),

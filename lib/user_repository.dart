@@ -43,6 +43,10 @@ class UserRepository {
   }
 
   Future<String> getsUser() async {
-    return (await _firebaseAuth.currentUser()).email;
+    return (await _firebaseAuth.currentUser()).email.toString();
+  }
+
+  Future<String> getsUid() async {
+    return (await _firebaseAuth.currentUser()).uid.toString();
   }
 }

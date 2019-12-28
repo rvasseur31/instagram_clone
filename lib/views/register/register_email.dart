@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:instagram_clone_androidx/components/editText/editText_input_decoration.dart';
-import 'package:instagram_clone_androidx/user_repository.dart';
-import 'package:instagram_clone_androidx/utils/colors.dart';
-import 'package:instagram_clone_androidx/views/register/bloc/bloc.dart';
-import 'package:instagram_clone_androidx/views/register/register_name_and_password.dart';
+import 'package:instagram_clone/components/editText/editText_input_decoration.dart';
+import 'package:instagram_clone/user_repository.dart';
+import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/views/register/register_name_and_password.dart';
+
+import 'bloc/register_bloc.dart';
 
 class Register extends StatelessWidget {
   final UserRepository _userRepository;
@@ -20,7 +21,7 @@ class Register extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: BlocProvider<RegisterBloc>(
-        builder: (context) => RegisterBloc(userRepository: _userRepository),
+        create: (context) => RegisterBloc(userRepository: _userRepository),
         child: RegisterEmail(userRepository: _userRepository),
       ),
     );
