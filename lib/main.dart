@@ -1,21 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'app.dart';
-import 'bloc/bloc.dart';
-import 'bloc/simple_bloc_delegate.dart';
-import 'user_repository.dart';
+import 'package:flutter/services.dart';
+import 'package:instagram_clone/core/provider/userRepository.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  BlocSupervisor.delegate = SimpleBlocDelegate();
-  final UserRepository userRepository = UserRepository();
-  runApp(
-    BlocProvider(
-      create: (context) => AuthenticationBloc(userRepository:  userRepository)..add(AppStarted()),
-      child: App(userRepository: userRepository),
-    )
-    
-  );
+import 'core/constants/uiData.dart';
+import 'root.dart';
+import 'ui/view/screens/LoginScreen.dart';
+import 'ui/view/screens/register/RegisterEmailScreen.dart';
+import 'ui/view/screens/register/RegisterPasswordScreen.dart';
 
+void main() => runApp(App());
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+    return ChangeNotifierProvider(
+      create: (_) => UserRepository.instance(),
+      child: MaterialApp(
+        title: UIData.appName,
+        theme: ThemeData(
+          primaryColor: Colors.black,
+          fontFamily: UIData.quickFont,
+          primarySwatch: Colors.amber,
+        ),
+        debugShowCheckedModeBanner: false,
+        showPerformanceOverlay: false,
+        routes: {
+          '/login': (context) => LoginScreen(),
+          '/register-email': (context) => RegisterEmailScreen(),
+          '/register-password': (context) => RegisterPasswordScreen()
+        },
+        home: Root(),
+      ),
+    );
+  }
 }
